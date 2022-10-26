@@ -1,4 +1,3 @@
-from distutils.log import error
 import itertools
 
 class Operation:
@@ -24,7 +23,7 @@ class PropositionSolver():
             self.opChars.append(op.character)
 
     def GetProposition(self):
-        self.proposition = input("Geef een propositie:\n")
+        self.proposition = input("Enter a logical statement:\n")
 
     def Parse(self):
         # Setup
@@ -207,36 +206,36 @@ class PropositionSolver():
 if(__name__ == '__main__'):
     solver = PropositionSolver()
 
-    def Negatie(a: bool, b: bool): return not(b)
-    def Conjunctie(a: bool, b: bool): return (a and b)
-    def Disjunctie(a: bool, b: bool): return (a or b)
-    def Implicatie(a: bool, b: bool): 
+    def Negation(a: bool, b: bool): return not(b)
+    def Conjunction(a: bool, b: bool): return (a and b)
+    def Disjunction(a: bool, b: bool): return (a or b)
+    def Implication(a: bool, b: bool): 
         if not(a): return True 
         else: return b
-    def Vervolg(a: bool, b: bool): 
+    def Causation(a: bool, b: bool): 
         if not(b): return True 
         else: return a
-    def Equivalentie(a: bool, b: bool): return a==b
-    def Ongelijkheid(a: bool, b: bool): return a!=b
+    def Equality(a: bool, b: bool): return a==b
+    def Inequality(a: bool, b: bool): return a!=b
 
-    solver.AddOperation(Operation('~', 0, Negatie, False, True))
-    solver.AddOperation(Operation('&', 1, Conjunctie))
-    solver.AddOperation(Operation('|', 2, Disjunctie))
-    solver.AddOperation(Operation('>', 3, Implicatie, True, True, True)) # Reverse order operations
-    solver.AddOperation(Operation('<', 3, Vervolg))
-    solver.AddOperation(Operation('=', 4, Equivalentie))
-    solver.AddOperation(Operation('/', 4, Ongelijkheid))
+    solver.AddOperation(Operation('!', 0, Negation, False, True))
+    solver.AddOperation(Operation('^', 1, Conjunction))
+    solver.AddOperation(Operation('|', 2, Disjunction))
+    solver.AddOperation(Operation('>', 3, Implication, True, True, True)) # Reverse order operations
+    solver.AddOperation(Operation('<', 3, Causation))
+    solver.AddOperation(Operation('=', 4, Equality))
+    solver.AddOperation(Operation('/', 4, Inequality))
 
     print("\
---Operaties--\n\
-Negatie:        ~\n\
-Conjunctie:     &\n\
-Disjunctie:     |\n\
-Implicatie:     >\n\
-Gevolg:         <\n\
-Equivalentie:   =\n\
-Ongelijkheid:   /\n\
-Volgorde:      ( )\n\
+--Operations--\n\
+Negation:       !\n\
+Conjunction:    ^\n\
+Disjunction:    |\n\
+Implication:    >\n\
+Causation:      <\n\
+Equality:       =\n\
+Inequality:     /\n\
+Sequencing:    ( )\n\
 ")
 
     solver.Initialize()
