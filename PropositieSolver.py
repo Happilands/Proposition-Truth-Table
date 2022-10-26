@@ -26,6 +26,8 @@ class PropositionSolver():
         self.proposition = input("Enter a logical statement:\n")
 
     def Parse(self):
+        self.proposition = self.proposition.replace(" ", "")
+
         # Setup
         self.args = []
         self.vars = []
@@ -220,6 +222,7 @@ if(__name__ == '__main__'):
 
     solver.AddOperation(Operation('!', 0, Negation, False, True))
     solver.AddOperation(Operation('^', 1, Conjunction))
+    solver.AddOperation(Operation('&', 1, Conjunction))
     solver.AddOperation(Operation('|', 2, Disjunction))
     solver.AddOperation(Operation('>', 3, Implication, True, True, True)) # Reverse order operations
     solver.AddOperation(Operation('<', 3, Causation))
@@ -229,7 +232,7 @@ if(__name__ == '__main__'):
     print("\
 --Operations--\n\
 Negation:       !\n\
-Conjunction:    ^\n\
+Conjunction:   ^ &\n\
 Disjunction:    |\n\
 Implication:    >\n\
 Causation:      <\n\
