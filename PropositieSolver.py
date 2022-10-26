@@ -106,13 +106,13 @@ class PropositionSolver():
 
         if(operation.left):
             if(argIndex <= firstP):
-                raise Exception("Error: No argument left of operation " + self.args[argIndex])
+                raise Exception("Error: No argument left of operation '" + self.args[argIndex] + "'")
             leftVarIndex = int(self.args[argIndex - 1])
             opString += self.vars[leftVarIndex]
         opString += self.args[argIndex]
         if(operation.right):
             if(argIndex + 1 >= lastP):
-                raise Exception("Error: No argument right of operation " + self.args[argIndex])
+                raise Exception("Error: No argument right of operation '" + self.args[argIndex] + "'")
             rightVarIndex = int(self.args[argIndex + 1])
             opString += self.vars[rightVarIndex]
 
