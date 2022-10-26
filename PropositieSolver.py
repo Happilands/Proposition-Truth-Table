@@ -221,6 +221,7 @@ if(__name__ == '__main__'):
     def Inequality(a: bool, b: bool): return a!=b
 
     solver.AddOperation(Operation('!', 0, Negation, False, True))
+    solver.AddOperation(Operation('~', 0, Negation, False, True))
     solver.AddOperation(Operation('^', 1, Conjunction))
     solver.AddOperation(Operation('&', 1, Conjunction))
     solver.AddOperation(Operation('|', 2, Disjunction))
@@ -231,7 +232,7 @@ if(__name__ == '__main__'):
 
     print("\
 --Operations--\n\
-Negation:       !\n\
+Negation:      ! ~\n\
 Conjunction:   ^ &\n\
 Disjunction:    |\n\
 Implication:    >\n\
